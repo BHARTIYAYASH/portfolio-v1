@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect } from 'react'
 
-const Loader = ({ onLoadComplete }) => {
+interface LoaderProps {
+    onLoadComplete: () => void;
+}
+
+const Loader = ({ onLoadComplete }: LoaderProps) => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isExiting, setIsExiting] = useState(false)
 
@@ -51,10 +55,10 @@ const Loader = ({ onLoadComplete }) => {
                         <div
                             key={index}
                             className={`absolute transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1) ${index === currentIndex
-                                    ? 'opacity-100 scale-100 blur-0 translate-y-0'
-                                    : index < currentIndex
-                                        ? 'opacity-0 scale-90 blur-sm -translate-y-12'
-                                        : 'opacity-0 scale-110 blur-sm translate-y-12'
+                                ? 'opacity-100 scale-100 blur-0 translate-y-0'
+                                : index < currentIndex
+                                    ? 'opacity-0 scale-90 blur-sm -translate-y-12'
+                                    : 'opacity-0 scale-110 blur-sm translate-y-12'
                                 }`}
                         >
                             <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold tracking-tighter font-custom drop-shadow-sm text-[#050505]">
